@@ -1,10 +1,17 @@
+import {useQuery} from '@tanstack/react-query';
 import React from 'react';
 import {useParams} from 'react-router-dom';
+import client from '../api/client';
+import movieApi from '../api/movie';
 
 const Detail = () => {
-  let {movieId} = useParams();
+  const {movieId} = useParams();
 
-  console.log(movieId);
+  const {error, data} = useQuery(['movie', movieId], () =>
+    movieApi.getMovieById(movieId),
+  );
+
+  console.log(error);
 
   return (
     <div className="movie_card" id="bright">

@@ -1,6 +1,6 @@
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {MovieResponseResult} from '../types/api.types';
-import Button from '../UI/Button';
+// import Button from '../UI/Button';
 
 type CardProps = {
   movie: MovieResponseResult;
@@ -8,6 +8,11 @@ type CardProps = {
 
 const Card: React.FC<CardProps> = ({movie}) => {
   const IMAGE_PATH = 'https://image.tmdb.org/t/p/original/';
+  const navigate = useNavigate();
+
+  const onClickHandler = () => {
+    navigate(`/${movie.id}`);
+  };
 
   return (
     <div className="flip-card-container">
@@ -42,9 +47,9 @@ const Card: React.FC<CardProps> = ({movie}) => {
               alt="Brohm Lake"
             />
           </figure>
-          <Button>
-            <Link to={`/${movie.id}`}>More Detail</Link>
-          </Button>
+          <button className="btn" onClick={onClickHandler}>
+            More Detail
+          </button>
           <div className="design-container">
             <span className="design design--1"></span>
             <span className="design design--2"></span>

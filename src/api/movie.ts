@@ -1,4 +1,4 @@
-import {MovieResponseResult} from './../types/api.types';
+// import {MovieResponseResult} from './../types/api.types';
 
 import client from './client';
 
@@ -9,12 +9,12 @@ const getAllMovies = async (): Promise<any> =>
     )
     .then((res) => res.data.results);
 
-const GetMovieById = async (id: number): Promise<any> => {
-  await client.get('/movie/{movie_id}').then((res) => res.data.results);
+const getMovieById = async (id: string | undefined): Promise<any> => {
+  await client.get(`movie/${id}`).then((res) => res.data);
 };
 const movieApi = {
   getAllMovies,
-  GetMovieById,
+  getMovieById,
 };
 
 export default movieApi;
