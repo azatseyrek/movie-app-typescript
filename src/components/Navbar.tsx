@@ -6,9 +6,11 @@ const Navbar = () => {
   const {setSearchQuery, searchQuery} = useCtx();
   return (
     <div className="navbar">
-      <Link to="/">
-        <span className="navbar__logo">Moviepedia</span>
-      </Link>
+      <div>
+        <Link to="/">
+          <span className="navbar__logo">Moviepedia</span>
+        </Link>
+      </div>
 
       <div className="navbar__search">
         <input
