@@ -50,11 +50,13 @@ body {
   padding: 9px 20px;
   border: 1px solid #28b485;
   border-radius: 1000px;
+  border: none;
   background: transparent;
   transition: 0.3s;
   cursor: pointer;
 }
 .btn:hover, .btn:focus {
+  border-radius: 40px;
   color: #fff;
   background: #55c57a;
   border-color: #28b485;
@@ -78,7 +80,7 @@ body {
 
 /* .flip-card */
 .flip-card {
-  max-width: 100%;
+  width: 100%;
   height: inherit;
   position: relative;
   transform-style: preserve-3d;
@@ -131,9 +133,15 @@ figure,
 .img-bg {
   position: absolute;
   top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
+}
+figure img,
+.img-bg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 /* img */
@@ -200,7 +208,7 @@ figcaption {
 
 /* ul */
 ul {
-  padding-top: 50%;
+  padding-top: 20%;
   margin: 0 auto;
   width: 70%;
   height: 100%;
@@ -363,6 +371,7 @@ button:focus + .design-container {
   font-size: 3.6rem;
   font-weight: 700;
   letter-spacing: 0.3rem;
+  margin-right: 3rem;
 }
 .navbar__logo:hover {
   cursor: pointer;
@@ -377,11 +386,11 @@ button:focus + .design-container {
   min-width: 20rem;
   background-color: #999;
   color: var(--white-1);
-  font-size: 1.2rem;
-  padding: 1rem;
+  font-size: 1rem;
+  padding: 0.7rem;
   border: none;
   border-radius: 40px;
-  color: #fff;
+  color: hsl(150deg, 50%, 60%);
   font-size: 2rem;
 }
 .navbar__search__input:focus {
@@ -406,7 +415,7 @@ button:focus + .design-container {
 .movie_card {
   position: relative;
   display: block;
-  width: 95%;
+  width: 85%;
   height: 70vh;
   margin: 80px auto;
   overflow: hidden;
@@ -434,68 +443,48 @@ button:focus + .design-container {
 }
 .movie_card .info_section .movie_header h1 {
   color: black;
-  font-weight: 400;
+  font-weight: 700;
 }
 .movie_card .info_section .movie_header h4 {
-  color: #555;
+  color: rgb(17, 9, 9);
   font-weight: 400;
+  font-size: 2rem;
 }
 .movie_card .info_section .movie_header .minutes {
   display: inline-block;
   margin-top: 15px;
-  color: #555;
+  color: rgb(155, 66, 66);
   padding: 5px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 .movie_card .info_section .movie_header .type {
   display: inline-block;
-  color: #959595;
+  color: #1eaf64;
   margin-left: 10px;
 }
 .movie_card .info_section .movie_header .locandina {
   position: relative;
   float: left;
   margin-right: 20px;
-  height: 120px;
+  height: 32rem;
   box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
 }
 .movie_card .info_section .movie_desc {
+  margin-top: 12rem;
   padding: 25px;
   height: 50%;
 }
 .movie_card .info_section .movie_desc .text {
   color: #545454;
-}
-.movie_card .info_section .movie_social {
-  height: 10%;
-  padding-left: 15px;
-  padding-bottom: 20px;
-}
-.movie_card .info_section .movie_social ul {
-  list-style: none;
-  padding: 0;
-}
-.movie_card .info_section .movie_social ul li {
-  display: inline-block;
-  color: rgba(0, 0, 0, 0.3);
-  transition: color 0.3s;
-  transition-delay: 0.15s;
-  margin: 0 10px;
-}
-.movie_card .info_section .movie_social ul li:hover {
-  transition: color 0.3s;
-  color: rgba(0, 0, 0, 0.7);
-}
-.movie_card .info_section .movie_social ul li i {
-  font-size: 19px;
-  cursor: pointer;
+  font-size: 1.5rem;
 }
 .movie_card .blur_back {
   position: absolute;
   top: 0;
   z-index: 1;
   height: 100%;
+  min-width: 60%;
   right: 0;
   background-size: cover;
   border-radius: 11px;
@@ -509,11 +498,11 @@ button:focus + .design-container {
     width: 50%;
   }
   .info_section {
-    background: linear-gradient(to right, #e5e6e6 50%, transparent 100%);
+    background: linear-gradient(to right, #e5e6e6 40%, transparent 100%);
   }
   .blur_back {
-    width: 80%;
-    background-position: -100% 10% !important;
+    width: 100%;
+    background-position: 0% 50% !important;
   }
 }
 @media screen and (max-width: 768px) {
@@ -525,7 +514,7 @@ button:focus + .design-container {
   }
   .blur_back {
     width: 100%;
-    background-position: 50% 50% !important;
+    background-position: 10% 50% !important;
   }
   .movie_header {
     width: 100%;
@@ -535,18 +524,7 @@ button:focus + .design-container {
     width: 100%;
   }
   .info_section {
-    background: linear-gradient(to top, #e5e6e6 50%, transparent 100%);
+    background: linear-gradient(to top, #e5e6e6 60%, transparent 100%);
     display: inline-grid;
   }
-}
-.bright_back {
-  background: url("https://occ-0-2433-448.1.nflxso.net/art/cd5c9/3e192edf2027c536e25bb5d3b6ac93ced77cd5c9.jpg");
-}
-
-.tomb_back {
-  background: url("https://fsmedia.imgix.net/cd/c9/5e/ba/4817/4d9a/93f0/c776ec32ecbc/lara-crofts-neck-looks-unnatural-in-the-new-poster-for-tomb-raider.png");
-}
-
-.ave_back {
-  background: url("https://www.gannett-cdn.com/-mm-/c03fd140debe8ad4c05cf81a5cad7ad61a12ce52/c=0-1580-2985-3266&r=x803&c=1600x800/local/-/media/2017/06/09/USATODAY/USATODAY/636326272873599176-Black-Panther-Teaser.jpg");
 }/*# sourceMappingURL=main.css.map */

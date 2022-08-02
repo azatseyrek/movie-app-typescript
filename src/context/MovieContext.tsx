@@ -1,6 +1,7 @@
 import {useQuery} from '@tanstack/react-query';
 import {createContext, useContext, useState} from 'react';
-import movieApi from '../api/movie';
+import {getAllMovies} from '../api/movie';
+// import movieApi from '../api/movie';
 import {MovieResponseResult} from '../types/api.types';
 import {MovieContextProps, MovieStateProviderProps} from './context.types';
 
@@ -12,12 +13,13 @@ export const MovieContextProvider: React.FC<MovieStateProviderProps> = ({
   children,
 }) => {
   const [movies, setMovies] = useState<MovieResponseResult[]>([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const {isLoading, isError} = useQuery<MovieResponseResult[]>(
     ['allMovies'],
     () => {
-      return movieApi.getAllMovies();
+      return getAllMovies();
     },
     {
       onSuccess: (data) => {
@@ -28,20 +30,30 @@ export const MovieContextProvider: React.FC<MovieStateProviderProps> = ({
       },
     },
   );
+
+  const filteredMovies = () => {
+    if (searchQuery === '') {
+      return movies;
+    }
+    return movies.filter((movie) => {
+      return movie.title.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+  };
   return (
-    <MovieContext.Provider value={{movies, isLoading, errorMessage, isError}}>
+    <MovieContext.Provider
+      value={{
+        movies,
+        isLoading,
+        errorMessage,
+        isError,
+        filteredMovies,
+        searchQuery,
+        setSearchQuery,
+      }}
+    >
       {children}
     </MovieContext.Provider>
   );
 };
 
 export default MovieContext;
-
-// const filteredPokemons = useMemo(() => {
-//     if (searchQuery === '') {
-//       return pokemons.data?.results;
-//     }
-//     return pokemons.data?.results.filter((pokemon) => {
-//       return pokemon.name.toLowerCase().includes(searchQuery.toLowerCase());
-//     });
-//   }, [pokemons, searchQuery]);

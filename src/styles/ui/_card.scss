@@ -15,7 +15,7 @@
 
 /* .flip-card */
 .flip-card {
-  max-width: 100%;
+  width: 100%;
   height: inherit;
 
   position: relative;
@@ -71,10 +71,15 @@ figure,
 .img-bg {
   position: absolute;
   top: 0;
-  left: 0;
 
   width: 100%;
   height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 /* img */
@@ -147,7 +152,7 @@ figcaption {
 
 /* ul */
 ul {
-  padding-top: 50%;
+  padding-top: 20%;
   margin: 0 auto;
   width: 70%;
   height: 100%;

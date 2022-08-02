@@ -3,7 +3,7 @@
 .movie_card {
   position: relative;
   display: block;
-  width: 95%;
+  width: 85%;
   height: 70vh;
   margin: 80px auto;
 
@@ -29,62 +29,41 @@
       height: 40%;
       h1 {
         color: black;
-        font-weight: 400;
+        font-weight: 700;
       }
       h4 {
-        color: #555;
+        color: rgb(17, 9, 9);
         font-weight: 400;
+        font-size: 2rem;
       }
       .minutes {
         display: inline-block;
         margin-top: 15px;
-        color: #555;
+        color: rgb(155, 66, 66);
         padding: 5px;
         border-radius: 5px;
         border: 1px solid rgba(0, 0, 0, 0.05);
       }
       .type {
         display: inline-block;
-        color: #959595;
+        color: #1eaf64;
         margin-left: 10px;
       }
       .locandina {
         position: relative;
         float: left;
         margin-right: 20px;
-        height: 120px;
+        height: 32rem;
         box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
       }
     }
     .movie_desc {
+      margin-top: 12rem;
       padding: 25px;
       height: 50%;
       .text {
         color: #545454;
-      }
-    }
-    .movie_social {
-      height: 10%;
-      padding-left: 15px;
-      padding-bottom: 20px;
-      ul {
-        list-style: none;
-        padding: 0;
-        li {
-          display: inline-block;
-          color: rgba(0, 0, 0, 0.3);
-          transition: color 0.3s;
-          transition-delay: 0.15s;
-          margin: 0 10px;
-          &:hover {
-            transition: color 0.3s;
-            color: rgba(0, 0, 0, 0.7);
-          }
-          i {
-            font-size: 19px;
-            cursor: pointer;
-          }
-        }
+        font-size: 1.5rem;
       }
     }
   }
@@ -93,6 +72,7 @@
     top: 0;
     z-index: 1;
     height: 100%;
+    min-width: 60%;
     right: 0;
     background-size: cover;
     border-radius: 11px;
@@ -109,12 +89,12 @@
   }
 
   .info_section {
-    background: linear-gradient(to right, #e5e6e6 50%, transparent 100%);
+    background: linear-gradient(to right, #e5e6e6 40%, transparent 100%);
   }
 
   .blur_back {
-    width: 80%;
-    background-position: -100% 10% !important;
+    width: 100%;
+    background-position: 0% 50% !important;
   }
 }
 
@@ -128,7 +108,7 @@
 
   .blur_back {
     width: 100%;
-    background-position: 50% 50% !important;
+    background-position: 10% 50% !important;
   }
 
   .movie_header {
@@ -141,19 +121,10 @@
   }
 
   .info_section {
-    background: linear-gradient(to top, #e5e6e6 50%, transparent 100%);
+    background: linear-gradient(to top, #e5e6e6 60%, transparent 100%);
     display: inline-grid;
   }
 }
 
-.bright_back {
-  background: url('https://occ-0-2433-448.1.nflxso.net/art/cd5c9/3e192edf2027c536e25bb5d3b6ac93ced77cd5c9.jpg');
-}
-
-.tomb_back {
-  background: url('https://fsmedia.imgix.net/cd/c9/5e/ba/4817/4d9a/93f0/c776ec32ecbc/lara-crofts-neck-looks-unnatural-in-the-new-poster-for-tomb-raider.png');
-}
-
-.ave_back {
-  background: url('https://www.gannett-cdn.com/-mm-/c03fd140debe8ad4c05cf81a5cad7ad61a12ce52/c=0-1580-2985-3266&r=x803&c=1600x800/local/-/media/2017/06/09/USATODAY/USATODAY/636326272873599176-Black-Panther-Teaser.jpg');
-}
+// .bright_back {
+// }

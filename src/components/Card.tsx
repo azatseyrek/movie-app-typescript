@@ -29,11 +29,7 @@ const Card: React.FC<CardProps> = ({movie}) => {
           </figure>
 
           <ul>
-            <li>Detail 1</li>
-            <li>Detail 2</li>
-            <li>Detail 3</li>
-            <li>Detail 4</li>
-            <li>Detail 5</li>
+            <li>IMDB : {movie.vote_average}</li>
           </ul>
         </div>
 

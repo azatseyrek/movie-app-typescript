@@ -3,12 +3,14 @@ import Card from '../components/Card';
 import {useCtx} from '../context/MovieContext';
 
 const CardLayout = () => {
-  const {movies} = useCtx();
+  const {movies, filteredMovies} = useCtx();
+
+  const filteredResult = filteredMovies();
 
   return (
     <div className="cardLayout">
-      {movies.map((movie) => (
-        <Card movie={movie} />
+      {filteredResult.map((movie) => (
+        <Card key={movie.id} movie={movie} />
       ))}
     </div>
   );

@@ -1,17 +1,22 @@
 import {useQuery} from '@tanstack/react-query';
 import React from 'react';
 import {useParams} from 'react-router-dom';
-import client from '../api/client';
-import movieApi from '../api/movie';
+import {getMovieById} from '../api/movie';
 
 const Detail = () => {
+  const IMAGE_PATH = 'https://image.tmdb.org/t/p/original/';
   const {movieId} = useParams();
 
-  const {error, data} = useQuery(['movie', movieId], () =>
-    movieApi.getMovieById(movieId),
+  const {data, isLoading, isError} = useQuery(['movie', movieId], () =>
+    getMovieById(movieId),
   );
 
-  console.log(error);
+  const Image = IMAGE_PATH + data?.backdrop_path;
+  console.log(Image);
+
+  if (isLoading) {
+    return <h1 style={{color: 'white'}}>Loading</h1>;
+  }
 
   return (
     <div className="movie_card" id="bright">
@@ -20,22 +25,28 @@ const Detail = () => {
           <img
             alt=""
             className="locandina"
-            src="https://movieplayer.net-cdn.it/t/images/2017/12/20/bright_jpg_191x283_crop_q85.jpg"
+            src={IMAGE_PATH + data.poster_path}
           />
-          <h1>Bright</h1>
-          <h4>2017, David Ayer</h4>
-          <span className="minutes">117 min</span>
-          <p className="type">Action, Crime, Fantasy</p>
-        </div>
-        <div className="movie_desc">
-          <p className="text">
-            Set in a world where fantasy creatures live side by side with
-            humans. A human cop is forced to work with an Orc to find a weapon
-            everyone is prepared to kill for.
+          <h1>{data.title}</h1>
+          <h4>{data.release_date}</h4>
+          <span className="minutes">{data.runtime} min</span>
+          <p className="type">
+            {data.genres[0].name},{data.genres[1]?.name},{data.genres[2]?.name}
           </p>
         </div>
+        <div className="movie_desc">
+          <p className="text">{data.overview}</p>
+        </div>
       </div>
-      <div className="blur_back bright_back"></div>
+      <div
+        className="blur_back"
+        style={{
+          background: `url(${Image})`,
+          backgroundSize: 'fit',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'top',
+        }}
+      ></div>
     </div>
   );
 };

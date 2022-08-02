@@ -10,6 +10,7 @@
   padding: 9px 20px;
   border: 1px solid $color-primary-dark;
   border-radius: 1000px;
+  border: none;
   background: transparent;
   transition: 0.3s;
 
@@ -17,6 +18,7 @@
 
   &:hover,
   &:focus {
+    border-radius: 40px;
     color: $color-white;
     background: $color-primary;
     border-color: $color-primary-dark;
