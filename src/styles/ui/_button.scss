@@ -1,0 +1,28 @@
+/* button */
+
+.btn {
+  font-family: inherit;
+  font-weight: bold;
+  color: $color-primary-dark;
+
+  letter-spacing: 2px;
+
+  padding: 9px 20px;
+  border: 1px solid $color-primary-dark;
+  border-radius: 1000px;
+  background: transparent;
+  transition: 0.3s;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: $color-white;
+    background: $color-primary;
+    border-color: $color-primary-dark;
+  }
+
+  &:active {
+    transform: translate(0, 1px);
+  }
+}

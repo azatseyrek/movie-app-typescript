@@ -1,0 +1,552 @@
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@700&family=Delius+Unicase:wght@400;700&family=Fascinate+Inline&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700,800");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: Delius Unicase, serif, cursive;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: rgba(34, 33, 33, 0.975);
+}
+
+::-moz-selection {
+  background-color: #55c57a;
+  color: #fff;
+}
+
+::selection {
+  background-color: #55c57a;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* button */
+.btn {
+  font-family: inherit;
+  font-weight: bold;
+  color: #28b485;
+  letter-spacing: 2px;
+  padding: 9px 20px;
+  border: 1px solid #28b485;
+  border-radius: 1000px;
+  background: transparent;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.btn:hover, .btn:focus {
+  color: #fff;
+  background: #55c57a;
+  border-color: #28b485;
+}
+.btn:active {
+  transform: translate(0, 1px);
+}
+
+.flip-card-container {
+  --hue: 150;
+  --primary: hsl(var(--hue), 50%, 50%);
+  --white-1: hsl(0, 0%, 90%);
+  --white-2: hsl(0, 0%, 80%);
+  --dark: hsl(var(--hue), 25%, 10%);
+  --grey: hsl(0, 0%, 50%);
+  width: 60rem;
+  height: 35rem;
+  margin: 1rem;
+  perspective: 1000px;
+}
+
+/* .flip-card */
+.flip-card {
+  width: inherit;
+  height: inherit;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: 0.6s 0.1s;
+}
+
+/* hover and focus-within states */
+.flip-card-container:hover .flip-card,
+.flip-card-container:focus-within .flip-card {
+  transform: rotateY(180deg);
+}
+
+/* .card-... */
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  background: var(--dark);
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .card-front */
+.card-front {
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+/* .card-back */
+.card-back {
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+/* figure */
+figure {
+  z-index: -1;
+}
+
+/* figure, .img-bg */
+figure,
+.img-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* img */
+img {
+  width: auto;
+  height: 100%;
+  background-position: center;
+}
+
+/* figcaption */
+figcaption {
+  display: block;
+  width: auto;
+  margin-top: 12%;
+  padding: 8px 22px;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.6;
+  letter-spacing: 2px;
+  word-spacing: 6px;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  right: 12px;
+  color: var(--white-1);
+  background: hsla(var(--hue), 25%, 10%, 0.5);
+}
+
+/* .img-bg */
+.img-bg {
+  background: hsla(var(--hue), 25%, 10%, 0.5);
+}
+
+.card-front .img-bg {
+  -webkit-clip-path: polygon(0 20%, 100% 40%, 100% 100%, 0 100%);
+          clip-path: polygon(0 20%, 100% 40%, 100% 100%, 0 100%);
+}
+
+.card-front .img-bg::before {
+  content: "";
+  position: absolute;
+  top: 34%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(18deg);
+  width: 100%;
+  height: 6px;
+  border: 1px solid var(--primary);
+  border-left-color: transparent;
+  border-right-color: transparent;
+  transition: 0.1s;
+}
+
+.card-back .img-bg {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 60%);
+          clip-path: polygon(0 0, 100% 0, 100% 80%, 0 60%);
+}
+
+/* hover state */
+.flip-card-container:hover .card-front .img-bg::before {
+  width: 6px;
+  border-left-color: var(--primary);
+  border-right-color: var(--primary);
+}
+
+/* ul */
+ul {
+  padding-top: 50%;
+  margin: 0 auto;
+  width: 70%;
+  height: 100%;
+  list-style: none;
+  color: var(--white-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* li */
+li {
+  width: 100%;
+  margin-top: 12px;
+  padding-bottom: 12px;
+  font-size: 1.6rem;
+  text-align: center;
+  position: relative;
+}
+
+li:nth-child(2n) {
+  color: var(--grey);
+}
+
+li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.2;
+}
+
+/* .design-container */
+.design-container {
+  --tr: 90;
+  --op: 0.5;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* .design */
+.design {
+  display: block;
+  background: var(--grey);
+  position: absolute;
+  opacity: var(--op);
+  transition: 0.3s;
+}
+
+.design--1,
+.design--2,
+.design--3,
+.design--4 {
+  width: 1px;
+  height: 100%;
+}
+
+.design--1,
+.design--2 {
+  top: 0;
+  transform: translateY(calc((var(--tr) - var(--tr) * 2) * 1%));
+}
+
+.design--1 {
+  left: 20%;
+}
+
+.design--2 {
+  left: 80%;
+}
+
+.design--3,
+.design--4 {
+  bottom: 0;
+  transform: translateY(calc((var(--tr) + var(--tr) - var(--tr)) * 1%));
+}
+
+.design--3 {
+  left: 24%;
+}
+
+.design--4 {
+  left: 76%;
+}
+
+.design--5,
+.design--6,
+.design--7,
+.design--8 {
+  width: 100%;
+  height: 1px;
+}
+
+.design--5,
+.design--6 {
+  left: 0;
+  transform: translateX(calc((var(--tr) - var(--tr) * 2) * 1%));
+}
+
+.design--5 {
+  top: 41%;
+}
+
+.design--6 {
+  top: 59%;
+}
+
+.design--7,
+.design--8 {
+  right: 0;
+  transform: translateX(calc((var(--tr) + var(--tr) - var(--tr)) * 1%));
+}
+
+.design--7 {
+  top: 44%;
+}
+
+.design--8 {
+  top: 56%;
+}
+
+/* states */
+button:hover + .design-container,
+button:active + .design-container,
+button:focus + .design-container {
+  --tr: 20;
+  --op: 0.7;
+}
+
+.abs-site-link {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: hsla(0deg, 0%, 100%, 0.6);
+  font-size: 16px;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  width: 95%;
+  max-height: 10rem;
+  border-bottom: 1px solid #777;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.2rem;
+  padding: 4rem;
+}
+.navbar__logo {
+  color: hsl(150deg, 50%, 50%);
+  font-size: 3.6rem;
+  font-weight: 700;
+  letter-spacing: 0.3rem;
+}
+.navbar__logo:hover {
+  cursor: pointer;
+  color: hsl(150deg, 50%, 60%);
+}
+.navbar__search {
+  flex: 1;
+  max-width: 50rem;
+}
+.navbar__search__input {
+  width: 100%;
+  min-width: 20rem;
+  background-color: #999;
+  color: var(--white-1);
+  font-size: 1.2rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 40px;
+  color: #fff;
+  font-size: 2rem;
+}
+.navbar__search__input:focus {
+  outline: none;
+}
+
+.cardLayout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.homePageContainer {
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.movie_card {
+  position: relative;
+  display: block;
+  width: 95%;
+  height: 70vh;
+  margin: 80px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all 0.4s;
+  box-shadow: 0px 0px 120px -25px rgba(0, 0, 0, 0.5);
+}
+.movie_card:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 0px 80px -25px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s;
+}
+.movie_card .info_section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-blend-mode: multiply;
+  z-index: 2;
+  border-radius: 10px;
+}
+.movie_card .info_section .movie_header {
+  position: relative;
+  padding: 25px;
+  height: 40%;
+}
+.movie_card .info_section .movie_header h1 {
+  color: black;
+  font-weight: 400;
+}
+.movie_card .info_section .movie_header h4 {
+  color: #555;
+  font-weight: 400;
+}
+.movie_card .info_section .movie_header .minutes {
+  display: inline-block;
+  margin-top: 15px;
+  color: #555;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.movie_card .info_section .movie_header .type {
+  display: inline-block;
+  color: #959595;
+  margin-left: 10px;
+}
+.movie_card .info_section .movie_header .locandina {
+  position: relative;
+  float: left;
+  margin-right: 20px;
+  height: 120px;
+  box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
+}
+.movie_card .info_section .movie_desc {
+  padding: 25px;
+  height: 50%;
+}
+.movie_card .info_section .movie_desc .text {
+  color: #545454;
+}
+.movie_card .info_section .movie_social {
+  height: 10%;
+  padding-left: 15px;
+  padding-bottom: 20px;
+}
+.movie_card .info_section .movie_social ul {
+  list-style: none;
+  padding: 0;
+}
+.movie_card .info_section .movie_social ul li {
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.3);
+  transition: color 0.3s;
+  transition-delay: 0.15s;
+  margin: 0 10px;
+}
+.movie_card .info_section .movie_social ul li:hover {
+  transition: color 0.3s;
+  color: rgba(0, 0, 0, 0.7);
+}
+.movie_card .info_section .movie_social ul li i {
+  font-size: 19px;
+  cursor: pointer;
+}
+.movie_card .blur_back {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  height: 100%;
+  right: 0;
+  background-size: cover;
+  border-radius: 11px;
+}
+
+@media screen and (min-width: 768px) {
+  .movie_header {
+    width: 65%;
+  }
+  .movie_desc {
+    width: 50%;
+  }
+  .info_section {
+    background: linear-gradient(to right, #e5e6e6 50%, transparent 100%);
+  }
+  .blur_back {
+    width: 80%;
+    background-position: -100% 10% !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .movie_card {
+    width: 95%;
+    margin: 70px auto;
+    min-height: 350px;
+    height: auto;
+  }
+  .blur_back {
+    width: 100%;
+    background-position: 50% 50% !important;
+  }
+  .movie_header {
+    width: 100%;
+    margin-top: 85px;
+  }
+  .movie_desc {
+    width: 100%;
+  }
+  .info_section {
+    background: linear-gradient(to top, #e5e6e6 50%, transparent 100%);
+    display: inline-grid;
+  }
+}
+.bright_back {
+  background: url("https://occ-0-2433-448.1.nflxso.net/art/cd5c9/3e192edf2027c536e25bb5d3b6ac93ced77cd5c9.jpg");
+}
+
+.tomb_back {
+  background: url("https://fsmedia.imgix.net/cd/c9/5e/ba/4817/4d9a/93f0/c776ec32ecbc/lara-crofts-neck-looks-unnatural-in-the-new-poster-for-tomb-raider.png");
+}
+
+.ave_back {
+  background: url("https://www.gannett-cdn.com/-mm-/c03fd140debe8ad4c05cf81a5cad7ad61a12ce52/c=0-1580-2985-3266&r=x803&c=1600x800/local/-/media/2017/06/09/USATODAY/USATODAY/636326272873599176-Black-Panther-Teaser.jpg");
+}/*# sourceMappingURL=main.css.map */
